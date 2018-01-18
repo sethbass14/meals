@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import './App.css';
 import 'semantic-ui-css/semantic.min.css'
 import { Navbar } from './Navbar'
+import MealsContainer from './MealsContainer'
+import Home from './Home'
 
 
 const URL = `http://localhost:3000/api/v1/`
@@ -21,25 +23,18 @@ class App extends Component {
     this.fetchIngredients();
   }
 
-  // fetchMeals = () => {
-  //   fetch(URL + 'meals')
-  //     .then(resp => resp.json())
-  //       .then(respMeals => this.setState({ meals : respMeals}))
-  // }
-
   fetchIngredients = () => {
     fetch(URL + 'ingredients')
       .then(resp => resp.json())
         .then(ingredients => this.setState({ingredients: ingredients}))
-
   }
 
   render() {
-    console.log(this.state)
     return (
       <div className="App">
         <Navbar />
-        <h1>LET'S FUCKING COOK</h1>
+        < Home / >
+        < MealsContainer/>
 
       </div>
     );
