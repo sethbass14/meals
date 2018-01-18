@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
+import { Route } from 'react-router-dom'
 import '../App.css';
 import 'semantic-ui-css/semantic.min.css'
 import { Navbar } from './Navbar'
 import MealsContainer from './MealsContainer'
 import Home from './Home'
 import api from '../services/api'
+
 
 
 class App extends Component {
@@ -16,6 +18,7 @@ class App extends Component {
     }
   }
 
+  // This code is not needed yet
   componentDidMount = () => {
     api.ingredients.fetchIngredients()
       .then(ingredients => this.setState({ ingredients }))
@@ -25,9 +28,8 @@ class App extends Component {
     return (
       <div className="App">
         <Navbar />
-        < Home / >
-        < MealsContainer/>
-
+        < Route exact path="/" component={Home} />
+        < Route exact path="/meals" component={MealsContainer} />
       </div>
     );
   }
