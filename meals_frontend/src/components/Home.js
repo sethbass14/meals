@@ -1,7 +1,5 @@
 import React from 'react';
-import { API_KEY } from './api-key';
-const GIFURL = `https://api.giphy.com/v1/gifs/search?api_key=${API_KEY}&q='cooking'&limit=25`
-
+import api from '../services/api'
 
 export default class Home extends React.Component {
   constructor(){
@@ -12,10 +10,8 @@ export default class Home extends React.Component {
     }
   }
 
-  //This code is not functioning. Take a look and figure it out.
   componentDidMount() {
-    fetch(GIFURL)
-      .then(resp => resp.json())
+    api.gifs.fetchGif()
         .then(gifs => {
           const randomGif = gifs.data[Math.floor(Math.random() * gifs.data.length)]
           this.setState({ cookingGif : randomGif }, () => console.log(this.state))

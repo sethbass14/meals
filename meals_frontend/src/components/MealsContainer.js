@@ -1,4 +1,5 @@
 import React from 'react';
+import api from '../services/api'
 
 const URL = `http://localhost:3000/api/v1/`
 export default class MealsContainer extends React.Component {
@@ -11,17 +12,11 @@ export default class MealsContainer extends React.Component {
   }
 
   componentDidMount() {
-    this.fetchMeals()
-  }
-
-  fetchMeals = () => {
-    fetch(URL + 'meals')
-      .then(resp => resp.json())
-        .then(respMeals => this.setState({ meals : respMeals}))
+    api.meals.fetchMeals()
+      .then(meals => this.setState({ meals }))
   }
 
   render() {
-    console.log(this.state)
     return (
       <div className="meals-container">
 
