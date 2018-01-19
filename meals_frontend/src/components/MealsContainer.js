@@ -16,8 +16,13 @@ export default class MealsContainer extends React.Component {
   }
 
   componentDidMount() {
+    const token = localStorage.getItem('token')
+    if (token) {
       api.meals.fetchMeals()
         .then(meals => this.setState({ meals }))
+    } else {
+      this.props.history.push('/login')
+    }
   }
 
   handleChange = (event) => {
