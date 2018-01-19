@@ -27,7 +27,8 @@ export default class MealsContainer extends React.Component {
   filteredMeals = () => {
     const term = this.state.searchTerm.toLowerCase()
     const filteredMeals = this.state.meals.filter(meal => meal.name.toLowerCase().includes(term) || meal.instructions.toLowerCase().includes(term))
-    this.setState({filteredMeals})
+    this.setState({ filteredMeals })
+    console.log(filteredMeals)
   }
 
   getMeals = () => {
@@ -40,19 +41,19 @@ export default class MealsContainer extends React.Component {
     }
   }
 
+// I don't really like this logic below, but it works
   render() {
-
     return (
       <div className="meals-container">
         < Filter
-          searchTerm={this.state.searchTerm}
-          handleChange={this.handleChange}
-          />
+        searchTerm={this.state.searchTerm}
+        handleChange={this.handleChange}
+        />
         <br></br>
-        {this.getMeals() ? < MealBrowser meals={this.getMeals()} /> : '...loading'}
-      </div>
-    )
+        {this.state.searchTerm && !this.state.filteredMeals.length ? <h2>No Results</h2> : (  <div className="meals-container">
+      {this.getMeals() ? < MealBrowser meals={this.getMeals()} /> : '...loading'}
+    </div> )}
+  </div>
+  )
   }
 }
-
-// {this.state.meals.length ? < MealBrowser meals={this.state.meals}/> : '...loading'}
