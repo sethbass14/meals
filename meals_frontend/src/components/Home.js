@@ -14,7 +14,7 @@ export default class Home extends React.Component {
     api.gifs.fetchGif()
         .then(gifs => {
           const randomGif = gifs.data[Math.floor(Math.random() * gifs.data.length)]
-          this.setState({ cookingGif : randomGif }, () => console.log(this.state))
+          this.setState({ cookingGif : randomGif })
         })
   }
 

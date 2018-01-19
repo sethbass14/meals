@@ -2,8 +2,8 @@ import React from 'react';
 import api from '../services/api'
 import MealBrowser from './MealBrowser'
 import Filter from './Filter'
+// import MealShowWrapper from './MealShow'
 
-const URL = `http://localhost:3000/api/v1/`
 export default class MealsContainer extends React.Component {
   constructor() {
     super()
@@ -16,8 +16,8 @@ export default class MealsContainer extends React.Component {
   }
 
   componentDidMount() {
-    api.meals.fetchMeals()
-      .then(meals => this.setState({ meals }))
+      api.meals.fetchMeals()
+        .then(meals => this.setState({ meals }))
   }
 
   handleChange = (event) => {
@@ -43,6 +43,7 @@ export default class MealsContainer extends React.Component {
 
 // I don't really like this logic below, but it works
   render() {
+    console.log('Meals Containter', this.props.history)
     return (
       <div className="meals-container">
         < Filter

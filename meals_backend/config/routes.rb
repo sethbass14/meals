@@ -4,6 +4,8 @@ Rails.application.routes.draw do
     namespace :v1 do
       resources :meals
       resources :ingredients
+      post '/auth', to: 'auth#create'
+      get '/current_user', to: 'auth#show'
     end
   end
 
