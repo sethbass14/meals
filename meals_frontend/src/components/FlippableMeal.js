@@ -2,7 +2,7 @@ import React from 'react';
 import MealCard from './MealCard'
 
 export default class FlippableMeal extends React.Component {
-  constructor() {
+  constructor(){
     super()
 
     this.state = {
@@ -10,15 +10,15 @@ export default class FlippableMeal extends React.Component {
     }
   }
 
-  //Do some iterating over the meals here to determine what kind of card to display.s
+  handleFlip = () => {
+    this.setState({ isFlipped: !this.state.isFlipped }, () => console.log('In handle flip', this.state))
+  }
+
   render() {
-    const mealCards = this.props.meals.map((meal, i) => <MealCard.MealCard key ={i} meal={meal}/>)
     return (
-      <div>
-        {mealCards}
+      <div className="ui eight wide column">
+        {!this.state.isFlipped? < MealCard.MealCard meal={this.props.meal} handleFlip={this.handleFlip} /> : < MealCard.FlippedMealCard meal={this.props.meal} handleFlip={this.handleFlip} />}
       </div>
     )
   }
-
-
 }
