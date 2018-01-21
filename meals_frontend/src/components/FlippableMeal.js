@@ -11,7 +11,7 @@ export default class FlippableMeal extends React.Component {
   }
 
   handleFlip = () => {
-    this.setState({ isFlipped: !this.state.isFlipped }, () => console.log('In handle flip', this.state))
+    this.setState({ isFlipped: !this.state.isFlipped })
   }
 
   render() {

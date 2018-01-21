@@ -2,6 +2,7 @@ import React from 'react';
 import api from '../services/api'
 import MealBrowser from './MealBrowser'
 import Filter from './Filter'
+import { Route, Switch } from 'react-router-dom'
 // import MealShowWrapper from './MealShow'
 
 export default class MealsContainer extends React.Component {
@@ -11,7 +12,7 @@ export default class MealsContainer extends React.Component {
     this.state = {
       meals : [],
       searchTerm : '',
-      filteredMeals : []
+      filteredMeals : [],
     }
   }
 
@@ -33,7 +34,6 @@ export default class MealsContainer extends React.Component {
     const term = this.state.searchTerm.toLowerCase()
     const filteredMeals = this.state.meals.filter(meal => meal.name.toLowerCase().includes(term) || meal.instructions.toLowerCase().includes(term))
     this.setState({ filteredMeals })
-    console.log(filteredMeals)
   }
 
   getMeals = () => {
@@ -48,18 +48,26 @@ export default class MealsContainer extends React.Component {
 
 // I don't really like this logic below, but it works
   render() {
-    console.log('Meals Containter', this.props.history)
     return (
-      <div className="meals-container">
-        < Filter
-        searchTerm={this.state.searchTerm}
-        handleChange={this.handleChange}
-        />
-        <br></br>
-        {this.state.searchTerm && !this.state.filteredMeals.length ? <h2>No Results</h2> : (  <div className="meals-container">
-      {this.getMeals() ? < MealBrowser meals={this.getMeals()} /> : '...loading'}
-    </div> )}
-  </div>
-  )
+      <div>
+        <Switch>
+          <Route exact path="/meals" render={ () => {
+              return (
+              <div>
+                <Filter
+                  searchTerm={this.state.searchTerm}
+                  handleChange={this.handleChange}
+                  />
+                <br></br>
+                {this.state.searchTerm && !this.state.filteredMeals.length ? <h2>No Results</h2> : (  <div className="meals-container">
+                  {this.getMeals() ? < MealBrowser meals={this.getMeals()} /> : '...loading'} </div> )}
+            </div>
+              )
+            }
+          }
+          />
+        </Switch>
+      </div>
+    )
   }
 }

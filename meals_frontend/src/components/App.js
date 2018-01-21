@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Route, Redirect } from 'react-router-dom'
+import { Route, Redirect, Switch } from 'react-router-dom'
 import '../App.css';
 import 'semantic-ui-css/semantic.min.css'
 import Navbar from './Navbar'
@@ -43,20 +43,22 @@ class App extends Component {
           currentUser={this.state.auth.currentUser}
           handleLogOut={this.handleLogOut}
         />
-      < Route exact path="/login"  render={ (routerProps) =>
-        <LogIn
-          handleLogIn={this.handleLogIn}
-          {...routerProps}/>
-      }
-      />
-        < Route
-          exact path="/"
-          render={() => {
-            const loggedIn = !!this.state.auth.currentUser.id;
-            return loggedIn ? <Home /> : <Redirect to="/login" />
-          }}
+      <Switch>
+        <Route exact path="/login"  render={ (routerProps) =>
+          <LogIn
+            handleLogIn={this.handleLogIn}
+            {...routerProps}/>
+        }
         />
-        < Route exact path="/meals" component={MealsContainer} />
+          <Route
+            exact path="/"
+            render={() => {
+              const loggedIn = !!localStorage.token;
+              return loggedIn ? <Home /> : <Redirect to="/login" />
+            }}
+          />
+          <Route exact path="/meals" component={MealsContainer} />
+        </Switch>
       </div>
     );
   }
