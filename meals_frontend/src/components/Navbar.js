@@ -3,6 +3,7 @@ import { Link, withRouter } from 'react-router-dom'
 
 const Navbar = (props) => {
   const loggedIn = props.currentUser.id
+  console.log(props.currentUser.id)
   return (
     <div className="ui menu">
       <Link to="/" className="item">

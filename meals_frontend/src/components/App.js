@@ -27,7 +27,7 @@ class App extends Component {
 
   handleLogIn = (user) => {
     const currentUser = { currentUser: user }
-    localStorage.setItem('token', user.id)
+    localStorage.setItem('token', user.token)
     this.setState({ auth: currentUser })
   }
 
