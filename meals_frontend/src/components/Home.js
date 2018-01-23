@@ -1,10 +1,10 @@
 import React from 'react';
 import api from '../services/api'
-import MealsContainer from './MealsContainer'
+import MealBrowser from './MealBrowser'
 
 export default class Home extends React.Component {
-  constructor(){
-    super()
+  constructor(props){
+    super(props);
 
     this.state = {
       cookingGif: null
@@ -20,6 +20,7 @@ export default class Home extends React.Component {
   }
 
   render() {
+    console.log(this.props.currentUser.meals)
     const { cookingGif } = this.state
     return (
       <div>
@@ -28,7 +29,7 @@ export default class Home extends React.Component {
           {cookingGif ? <iframe src={cookingGif.embed_url} height={cookingGif.images["480w_still"].height} width={cookingGif.images["480w_still"].width} /> : '...loading' }
         </div>
         <h1>Your Meals</h1>
-        <MealsContainer />
+        {Object.keys(this.props.currentUser).length ? <MealBrowser meals={this.props.currentUser.meals} currentUser={this.props.currentUser}/> : '...loading'}
       </div>
     )
   }

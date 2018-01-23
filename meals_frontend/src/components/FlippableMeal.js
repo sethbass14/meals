@@ -3,8 +3,8 @@ import { Link } from 'react-router-dom'
 import MealCard from './MealCard'
 
 export default class FlippableMeal extends React.Component {
-  constructor(){
-    super()
+  constructor(props){
+    super(props)
 
     this.state = {
       isFlipped: false
@@ -18,9 +18,12 @@ export default class FlippableMeal extends React.Component {
   render() {
     return (
       <div className="ui eight wide column" >
-
-          {!this.state.isFlipped? < MealCard.MealCard meal={this.props.meal} handleFlip={this.handleFlip} /> : < MealCard.FlippedMealCard meal={this.props.meal} handleFlip={this.handleFlip} />}
-
+        <MealCard
+          isFlipped={this.state.isFlipped}
+          handleFlip={this.handleFlip}
+          meal={this.props.meal}
+          currentUser={this.props.currentUser}
+          />
       </div>
     )
   }

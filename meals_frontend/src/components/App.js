@@ -64,7 +64,7 @@ class App extends Component {
             exact path="/"
             render={() => {
               const loggedIn = !!localStorage.token;
-              return loggedIn ? <Home /> : <Redirect to="/login" />
+              return loggedIn ? <Home currentUser={this.state.auth.currentUser}/> : <Redirect to="/login" />
             }}
           />
             <Route path="/meals" component={MealsContainer} />

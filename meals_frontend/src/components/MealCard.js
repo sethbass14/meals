@@ -9,26 +9,33 @@ const MealCard = (props) => {
       </Link>
       <div className="content">
         <a onClick={props.handleFlip}>{props.meal.name}</a>
+        {props.isFlipped ?   <p>{props.meal.instructions}</p> : null}
+      </div>
+      <div className="extra content">
+        <a>
+          {props.currentUser ? RemoveMealCSS() : AddMealCSS()}
+        </a>
       </div>
     </div>
   )
 }
 
-const FlippedMealCard = (props) => {
+const RemoveMealCSS = () => {
   return (
-    <div className="ui card" >
-      <div className="image" onClick={() => console.log(props.meal.id)}>
-        <img src={props.meal.image_url} alt={props.meal.name}/>
-      </div>
-      <div className="content">
-        <a onClick={props.handleFlip}>{props.meal.name}</a>
-        <p>{props.meal.instructions}</p>
-      </div>
+    <div>
+      <i className="minus circle icon"></i>
+      <p>Remove Meal</p>
     </div>
   )
 }
 
-export default {
-  MealCard,
-  FlippedMealCard
+const AddMealCSS = () => {
+  return (
+    <div>
+      <i className="add circle icon"></i>
+      <p>Add Meal</p>
+    </div>
+  )
 }
+
+export default MealCard
