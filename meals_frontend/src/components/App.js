@@ -7,6 +7,7 @@ import MealsContainer from './MealsContainer'
 import Home from './Home'
 import api from '../services/api'
 import LogIn from './LogIn'
+import SignUp from './SignUp'
 
 class App extends Component {
   constructor() {
@@ -51,13 +52,20 @@ class App extends Component {
               {...routerProps}/>
           }
           />
-            <Route
-              exact path="/"
-              render={() => {
-                const loggedIn = !!localStorage.token;
-                return loggedIn ? <Home /> : <Redirect to="/login" />
-              }}
-            />
+        <Route exact path="/signup" render={ (routerProps) =>
+              <SignUp
+                handleLogIn={this.handleLogIn}
+                {...routerProps}
+              />
+            }
+        />
+          <Route
+            exact path="/"
+            render={() => {
+              const loggedIn = !!localStorage.token;
+              return loggedIn ? <Home /> : <Redirect to="/login" />
+            }}
+          />
             <Route path="/meals" component={MealsContainer} />
         </Switch>
       </div>

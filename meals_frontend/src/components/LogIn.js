@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import api from '../services/api'
 
 export default class LogIn extends React.Component {
@@ -36,8 +37,20 @@ export default class LogIn extends React.Component {
   render() {
     return (
       <div className='log-in'>
-        {this.state.error ? <h1>Try Again</h1> : null}
+        {this.state.error ?
+          <div>
+            <h3>Try Again</h3>
+            <h3>or</h3>
+            <Link to="/signup">Sign Up</Link>
+            <br></br>
+          </div>: null}
         <form onSubmit={this.handleSubmit}>
+          <h1>Log In</h1>
+          <h2>or</h2>
+          <Link to="/signup">
+            Sign Up
+          </Link>
+          <br></br>
           <label>Username</label>
           <input type="text" placeholder="username" name="username" onChange={this.handleChange}></input>
           <br></br>

@@ -29,7 +29,7 @@ const postNewUser = (user_data) => {
     headers,
     method: 'POST',
     body: JSON.stringify(user_data)
-  })
+  }).then(resp => resp.json())
 }
 
 const fetchMeals = () => {
