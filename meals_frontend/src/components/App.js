@@ -43,22 +43,24 @@ class App extends Component {
           currentUser={this.state.auth.currentUser}
           handleLogOut={this.handleLogOut}
         />
-      <Switch>
-        <Route exact path="/login"  render={ (routerProps) =>
-          <LogIn
-            handleLogIn={this.handleLogIn}
-            {...routerProps}/>
-        }
-        />
-          <Route
-            exact path="/"
-            render={() => {
-              const loggedIn = !!localStorage.token;
-              return loggedIn ? <Home /> : <Redirect to="/login" />
-            }}
+      <div id="content">
+        <Switch>
+          <Route exact path="/login"  render={ (routerProps) =>
+            <LogIn
+              handleLogIn={this.handleLogIn}
+              {...routerProps}/>
+          }
           />
-          <Route exact path="/meals" component={MealsContainer} />
+            <Route
+              exact path="/"
+              render={() => {
+                const loggedIn = !!localStorage.token;
+                return loggedIn ? <Home /> : <Redirect to="/login" />
+              }}
+            />
+            <Route path="/meals" component={MealsContainer} />
         </Switch>
+      </div>
       </div>
     );
   }

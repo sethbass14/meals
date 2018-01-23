@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom'
 import MealCard from './MealCard'
 
 export default class FlippableMeal extends React.Component {
@@ -16,8 +17,10 @@ export default class FlippableMeal extends React.Component {
 
   render() {
     return (
-      <div className="ui eight wide column">
-        {!this.state.isFlipped? < MealCard.MealCard meal={this.props.meal} handleFlip={this.handleFlip} /> : < MealCard.FlippedMealCard meal={this.props.meal} handleFlip={this.handleFlip} />}
+      <div className="ui eight wide column" >
+
+          {!this.state.isFlipped? < MealCard.MealCard meal={this.props.meal} handleFlip={this.handleFlip} /> : < MealCard.FlippedMealCard meal={this.props.meal} handleFlip={this.handleFlip} />}
+
       </div>
     )
   }

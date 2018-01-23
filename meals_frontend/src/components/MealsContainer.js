@@ -1,8 +1,9 @@
 import React from 'react';
+import { Switch, Route } from 'react-router-dom'
 import api from '../services/api'
 import MealBrowser from './MealBrowser'
 import Filter from './Filter'
-import { Route, Switch } from 'react-router-dom'
+import MealShow from './MealShow'
 // import MealShowWrapper from './MealShow'
 
 export default class MealsContainer extends React.Component {
@@ -49,22 +50,33 @@ export default class MealsContainer extends React.Component {
 // I don't really like this logic below, but it works
   render() {
     return (
-      <div>
+      <div className="meals-containter">
         <Switch>
-          <Route exact path="/meals" render={ () => {
+          <Route
+            path="/meals/:id"
+            render={ ({ match }) => {
+              const meal = this.state.meals.find(meal => meal.id === parseInt(match.params.id))
               return (
-              <div>
-                <Filter
-                  searchTerm={this.state.searchTerm}
-                  handleChange={this.handleChange}
-                  />
-                <br></br>
-                {this.state.searchTerm && !this.state.filteredMeals.length ? <h2>No Results</h2> : (  <div className="meals-container">
-                  {this.getMeals() ? < MealBrowser meals={this.getMeals()} /> : '...loading'} </div> )}
-            </div>
+                meal ? <MealShow  meal={meal}/> : '...loading'
               )
+            }}
+            />
+          <Route
+            path="/meals"
+            render={ () => {
+              return (
+                <div>
+                  <Filter
+                    searchTerm={this.state.searchTerm}
+                    handleChange={this.handleChange}
+                    />
+                  <br></br>
+                  {this.state.searchTerm && !this.state.filteredMeals.length ? <h2>No Results</h2> : (  <div className="meals-container">
+                    {this.getMeals() ? <MealBrowser meals={this.getMeals()} /> : '...loading'} </div> )}
+              </div>
+                )
+              }
             }
-          }
           />
         </Switch>
       </div>
