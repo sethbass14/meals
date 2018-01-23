@@ -38,6 +38,7 @@ class App extends Component {
   }
 
   render() {
+    console.log(this.state.auth.currentUser)
     return (
       <div className="App">
         <Navbar
