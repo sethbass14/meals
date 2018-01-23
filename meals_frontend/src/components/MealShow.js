@@ -2,6 +2,8 @@ import React from 'react';
 
 const MealShow = ({ meal }) => {
   console.log(meal)
+  const sluggedUrl = meal.youtube_url.replace('watch?v=', 'embed/')
+  console.log(sluggedUrl)
   return (
     <div className="meal-show">
       <h1>{meal.name}</h1>
@@ -19,10 +21,18 @@ const MealShow = ({ meal }) => {
           <p>{meal.instructions}</p>
           </div>
         </div>
-        <div>
-          <h3>Ingredients</h3>
-          {meal.ingredients.map((ingredient, i )=> <p key={i}>{ingredient.name}</p>)}
+        <div className="row">
+          <div className="column ingredient-list">
+            <h3>Ingredients</h3>
+            {meal.ingredients.map((ingredient, i )=> <p key={i}>{ingredient.name}</p>)}
+          </div>
+          <div className="column meal-video">
+            { sluggedUrl === 'none' ? null
+              : 
+            <iframe src={sluggedUrl} width="420" height="315" frameBorder="0" allowFullScreen></iframe>
+            }
         </div>
+      </div>
       </div>
     </div>
     )
