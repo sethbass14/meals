@@ -1,5 +1,6 @@
 import React from 'react';
 import api from '../services/api'
+import MealsContainer from './MealsContainer'
 
 export default class Home extends React.Component {
   constructor(){
@@ -26,6 +27,8 @@ export default class Home extends React.Component {
         <div>
           {cookingGif ? <iframe src={cookingGif.embed_url} height={cookingGif.images["480w_still"].height} width={cookingGif.images["480w_still"].width} /> : '...loading' }
         </div>
+        <h1>Your Meals</h1>
+        <MealsContainer />
       </div>
     )
   }
