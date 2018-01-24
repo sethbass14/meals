@@ -33,9 +33,9 @@ const postNewUser = (user_data) => {
 }
 
 const postNewUserMeal = (data) => {
-  return fetch(`${APP_API_ROOT}/users/${data.user_id}`, {
+  return fetch(`${APP_API_ROOT}/user_meals/`, {
     headers,
-    method: 'PATCH',
+    method: 'POST',
     body: JSON.stringify(data)
   }).then(resp => resp.json())
 }

@@ -7,7 +7,8 @@ export default class FlippableMeal extends React.Component {
     super(props)
 
     this.state = {
-      isFlipped: false
+      isFlipped: false,
+      isAdded: false
     }
   }
 
@@ -15,15 +16,21 @@ export default class FlippableMeal extends React.Component {
     this.setState({ isFlipped: !this.state.isFlipped })
   }
 
+  handleAdd = () => {
+    this.setState({ isAdded: !this.state.isAdded })
+  }
+
   render() {
     return (
       <div className="ui eight wide column" >
         <MealCard
-          isFlipped={this.state.isFlipped}
-          handleFlip={this.handleFlip}
           meal={this.props.meal}
           currentUser={this.props.currentUser}
           handleAddMeal={this.props.handleAddMeal}
+          isFlipped={this.state.isFlipped}
+          handleFlip={this.handleFlip}
+          isAdded={this.state.isAdded}
+          handleAdd={this.handleAdd}
           />
       </div>
     )

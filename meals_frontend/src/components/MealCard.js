@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom'
 
 const MealCard = (props) => {
-  return (
+  return !props.isAdded ? (
     <div className="ui card" >
       <Link to={`/meals/${props.meal.id}`} className="image">
         <img src={props.meal.image_url} alt={props.meal.name}/>
@@ -13,9 +13,15 @@ const MealCard = (props) => {
       </div>
       <div className="extra content">
         <a>
-          {props.currentUser ? <RemoveMeal/> : <AddMeal handleAddMeal={props.handleAddMeal} meal={props.meal}/>}
+          {props.currentUser ? <RemoveMeal/> : <AddMeal handleAddMeal={props.handleAddMeal} meal={props.meal} handleAdd={props.handleAdd}/>}
         </a>
       </div>
+    </div>
+  ) : (
+    <div>
+      <Link to={"/"}>
+        <h2> View Your Meals </h2>
+      </Link>
     </div>
   )
 }
@@ -31,7 +37,10 @@ const RemoveMeal = () => {
 
 const AddMeal = (props) => {
   return (
-    <div onClick={() => props.handleAddMeal(props.meal)}>
+    <div onClick={() => {
+        props.handleAdd()
+        props.handleAddMeal(props.meal)
+      }}>
       <i className="add circle icon"></i>
       <p>Add Meal</p>
     </div>

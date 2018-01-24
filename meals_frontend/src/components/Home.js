@@ -25,10 +25,10 @@ export default class Home extends React.Component {
       <div>
         <h1>TIME TO FUCKING COOK</h1>
         <div>
-          {cookingGif ? <iframe src={cookingGif.embed_url} height={cookingGif.images["480w_still"].height} width={cookingGif.images["480w_still"].width} /> : '...loading' }
+          {cookingGif ? <iframe src={cookingGif.embed_url} height={cookingGif.images["480w_still"].height} width={cookingGif.images["480w_still"].width} /> : '...loading GIF' }
         </div>
         <h1>Your Meals</h1>
-        {Object.keys(this.props.currentUser).length ? <MealBrowser meals={this.props.currentUser.meals} currentUser={this.props.currentUser}/> : '...loading'}
+        {this.props.currentUser.id ? <MealBrowser meals={this.props.currentUser.meals} currentUser={this.props.currentUser}/> : '...loading in Home'}
       </div>
     )
   }

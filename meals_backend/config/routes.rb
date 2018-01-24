@@ -5,6 +5,7 @@ Rails.application.routes.draw do
       resources :meals
       resources :ingredients
       resources :users
+      resources :user_meals
       post '/auth', to: 'auth#create'
       get '/current_user', to: 'auth#show'
     end

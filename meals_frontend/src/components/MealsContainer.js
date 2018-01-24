@@ -9,8 +9,10 @@ export default class MealsContainer extends React.Component {
   constructor() {
     super()
 
+    //The validMeals accounts for the Meal index not excluding the meals that the user has added.
     this.state = {
       meals : [],
+      validMeals : [],
       searchTerm : '',
       filteredMeals : [],
     }
@@ -26,10 +28,10 @@ export default class MealsContainer extends React.Component {
     }
   }
 
-  //I don't like the logic below for filtering meals. It seems inefficient 
+  //I don't like the logic below for filtering meals. It seems inefficient
   filterUserMeals = () => {
       const validMeals = this.state.meals.filter(meal => !this.props.currentUser.meal_ids.includes(meal.id))
-      this.setState({ meals : validMeals})
+      this.setState({ validMeals : validMeals})
   }
 
   handleChange = (event) => {
@@ -38,15 +40,15 @@ export default class MealsContainer extends React.Component {
 
   filteredMeals = () => {
     const term = this.state.searchTerm.toLowerCase()
-    const filteredMeals = this.state.meals.filter(meal => meal.name.toLowerCase().includes(term) || meal.instructions.toLowerCase().includes(term))
+    const filteredMeals = this.state.validMeals.filter(meal => meal.name.toLowerCase().includes(term) || meal.instructions.toLowerCase().includes(term))
     this.setState({ filteredMeals })
   }
 
   getMeals = () => {
     if (this.state.filteredMeals.length) {
       return this.state.filteredMeals
-    } else if (this.state.meals.length) {
-      return this.state.meals
+    } else if (this.state.validMeals.length) {
+      return this.state.validMeals
     } else {
       return null
     }
@@ -63,7 +65,7 @@ export default class MealsContainer extends React.Component {
             render={ ({ match }) => {
               const meal = this.state.meals.find(meal => meal.id === parseInt(match.params.id))
               return (
-                meal ? <MealShow  meal={meal}/> : '...loading'
+                meal ? <MealShow  meal={meal}/> : '...loading in Meal Show'
               )
             }}
             />
