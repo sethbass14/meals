@@ -20,10 +20,16 @@ export default class MealsContainer extends React.Component {
     const token = localStorage.getItem('token')
     if (token) {
       api.meals.fetchMeals()
-        .then(meals => this.setState({ meals }))
+        .then(meals => this.setState({ meals }, () => this.filterUserMeals()))
     } else {
       this.props.history.push('/login')
     }
+  }
+
+  //I don't like the logic below for filtering meals. It seems inefficient 
+  filterUserMeals = () => {
+      const validMeals = this.state.meals.filter(meal => !this.props.currentUser.meal_ids.includes(meal.id))
+      this.setState({ meals : validMeals})
   }
 
   handleChange = (event) => {

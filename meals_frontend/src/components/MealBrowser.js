@@ -2,7 +2,7 @@ import React from 'react';
 import FlippableMeal from './FlippableMeal'
 
 const MealBrowser = (props) => {
-  const allMeals = props.meals.map((meal, index) => {
+  const allMeals = props.meals ? props.meals.map((meal, index) => {
     return (
         <FlippableMeal
           key={index}
@@ -11,7 +11,8 @@ const MealBrowser = (props) => {
           handleAddMeal={props.handleAddMeal}
           />
       )
-  })
+  }) :
+  null
 
   return (
     <div className="ui grid container">
