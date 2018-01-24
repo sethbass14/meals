@@ -20,7 +20,6 @@ export default class Home extends React.Component {
   }
 
   render() {
-    console.log(this.props.currentUser.meals)
     const { cookingGif } = this.state
     return (
       <div>

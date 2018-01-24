@@ -8,6 +8,7 @@ const MealBrowser = (props) => {
           key={index}
           meal={meal}
           currentUser={props.currentUser}
+          handleAddMeal={props.handleAddMeal}
           />
       )
   })

@@ -32,6 +32,14 @@ const postNewUser = (user_data) => {
   }).then(resp => resp.json())
 }
 
+const postNewUserMeal = (data) => {
+  return fetch(`${APP_API_ROOT}/users/${data.user_id}`, {
+    headers,
+    method: 'PATCH',
+    body: JSON.stringify(data)
+  }).then(resp => resp.json())
+}
+
 const fetchMeals = () => {
   return fetch(`${APP_API_ROOT}/meals/`).then(resp => resp.json())
 }
@@ -52,7 +60,8 @@ export default {
     getCurrentUser
   },
   users: {
-    postNewUser
+    postNewUser,
+    postNewUserMeal
   },
   meals: {
     fetchMeals

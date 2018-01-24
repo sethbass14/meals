@@ -72,7 +72,7 @@ export default class MealsContainer extends React.Component {
                     />
                   <br></br>
                   {this.state.searchTerm && !this.state.filteredMeals.length ? <h2>No Results</h2> : (  <div className="meals-container">
-                    {this.getMeals() ? <MealBrowser meals={this.getMeals()} /> : '...loading'} </div> )}
+                    {this.getMeals() ? <MealBrowser meals={this.getMeals()} handleAddMeal={this.props.handleAddMeal} /> : '...loading'} </div> )}
               </div>
                 )
               }

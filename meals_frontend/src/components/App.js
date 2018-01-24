@@ -37,6 +37,11 @@ class App extends Component {
     this.setState({auth: {currentUser : {} }})
   }
 
+  handleAddMeal = (meal) => {
+    api.users.postNewUserMeal({user_id: this.state.auth.currentUser.id, meal_id: meal.id})
+      .then(user => this.setState({ auth: {currentUser: user }}))
+  }
+
   render() {
     console.log(this.state.auth.currentUser)
     return (
@@ -67,7 +72,13 @@ class App extends Component {
               return loggedIn ? <Home currentUser={this.state.auth.currentUser}/> : <Redirect to="/login" />
             }}
           />
-            <Route path="/meals" component={MealsContainer} />
+        <Route path="/meals" render={() => {
+            return <MealsContainer
+              currentUser={this.state.auth.currentUser}
+              handleAddMeal={this.handleAddMeal}
+              />
+          }}
+          />
         </Switch>
       </div>
       </div>

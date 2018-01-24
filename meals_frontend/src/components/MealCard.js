@@ -13,14 +13,14 @@ const MealCard = (props) => {
       </div>
       <div className="extra content">
         <a>
-          {props.currentUser ? RemoveMealCSS() : AddMealCSS()}
+          {props.currentUser ? <RemoveMeal/> : <AddMeal handleAddMeal={props.handleAddMeal} meal={props.meal}/>}
         </a>
       </div>
     </div>
   )
 }
 
-const RemoveMealCSS = () => {
+const RemoveMeal = () => {
   return (
     <div>
       <i className="minus circle icon"></i>
@@ -29,9 +29,9 @@ const RemoveMealCSS = () => {
   )
 }
 
-const AddMealCSS = () => {
+const AddMeal = (props) => {
   return (
-    <div>
+    <div onClick={() => props.handleAddMeal(props.meal)}>
       <i className="add circle icon"></i>
       <p>Add Meal</p>
     </div>
