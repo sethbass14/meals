@@ -7,11 +7,7 @@ const MealShow = ({ meal }) => {
       <div className="ui two column grid container">
         <div className="row">
           <div className="column">
-          <a className="back" onClick={() => window.history.back()}>
-            <i className="arrow circle left icon"></i>
-            <p>Go Back</p>
-          </a>
-        </div>
+          </div>
         <div className="column">
         <h1>{meal.name}</h1>
         </div>
