@@ -36,6 +36,9 @@ const Navbar = (props) => {
         <Link to="/meals" className="item">
           <p className="nav">Meals</p>
         </Link>
+        <Link to="/meals/new" className="item">
+          <p className='nae'>New Meal</p>
+        </Link>
       </div>
     </div>
   )

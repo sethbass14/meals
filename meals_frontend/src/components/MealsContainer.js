@@ -4,6 +4,7 @@ import api from '../services/api'
 import MealBrowser from './MealBrowser'
 import Filter from './Filter'
 import MealShow from './MealShow'
+import MealNew from './MealNew'
 
 export default class MealsContainer extends React.Component {
   constructor() {
@@ -61,6 +62,10 @@ export default class MealsContainer extends React.Component {
       <div className="meals-containter">
         <Switch>
           <Route
+            path="/meals/new"
+            component={MealNew}
+            />
+          <Route
             path="/meals/:id"
             render={ ({ match }) => {
               const meal = this.state.meals.find(meal => meal.id === parseInt(match.params.id))
@@ -79,9 +84,22 @@ export default class MealsContainer extends React.Component {
                     handleChange={this.handleChange}
                     />
                   <br></br>
-                  {this.state.searchTerm && !this.state.filteredMeals.length ? <h2>No Results</h2> : (  <div className="meals-container">
-                    {this.getMeals() ? <MealBrowser meals={this.getMeals()} handleAddMeal={this.props.handleAddMeal} handleDeleteUserMeal={this.props.handleDeleteUserMeal}/> : '...loading'} </div> )}
-              </div>
+                  {this.state.searchTerm && !this.state.filteredMeals.length ? (
+                    <h2>No Results</h2>
+                    ) : (
+                      <div className="meals-container">
+                    {this.getMeals() ? (
+                      <MealBrowser
+                        meals={this.getMeals()}
+                        handleAddMeal={this.props.handleAddMeal}
+                        handleDeleteUserMeal={this.props.handleDeleteUserMeal}
+                        />
+                    )  : (
+                      '...loading'
+                    )}
+                    </div>
+                  )}
+                </div>
                 )
               }
             }
