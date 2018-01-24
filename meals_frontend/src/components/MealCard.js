@@ -13,7 +13,7 @@ const MealCard = (props) => {
       </div>
       <div className="extra content">
         <a>
-          {props.currentUser ? <RemoveMeal/> : <AddMeal handleAddMeal={props.handleAddMeal} meal={props.meal} handleAdd={props.handleAdd}/>}
+          {props.currentUser ? <RemoveMeal meal={props.meal} handleDeleteUserMeal={props.handleDeleteUserMeal}/> : <AddMeal handleAddMeal={props.handleAddMeal} meal={props.meal} handleAdd={props.handleAdd}/>}
         </a>
       </div>
     </div>
@@ -26,9 +26,11 @@ const MealCard = (props) => {
   )
 }
 
-const RemoveMeal = () => {
+const RemoveMeal = (props) => {
   return (
-    <div>
+    <div onClick={() => {
+        props.handleDeleteUserMeal(props.meal)
+      }}>
       <i className="minus circle icon"></i>
       <p>Remove Meal</p>
     </div>

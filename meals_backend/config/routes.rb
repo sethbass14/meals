@@ -6,6 +6,7 @@ Rails.application.routes.draw do
       resources :ingredients
       resources :users
       resources :user_meals
+      delete '/delete_user_meal', to: 'user_meals#destroy'
       post '/auth', to: 'auth#create'
       get '/current_user', to: 'auth#show'
     end

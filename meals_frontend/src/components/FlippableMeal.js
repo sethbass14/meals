@@ -27,6 +27,7 @@ export default class FlippableMeal extends React.Component {
           meal={this.props.meal}
           currentUser={this.props.currentUser}
           handleAddMeal={this.props.handleAddMeal}
+          handleDeleteUserMeal={this.props.handleDeleteUserMeal}
           isFlipped={this.state.isFlipped}
           handleFlip={this.handleFlip}
           isAdded={this.state.isAdded}

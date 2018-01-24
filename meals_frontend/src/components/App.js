@@ -38,8 +38,14 @@ class App extends Component {
   }
 
   handleAddMeal = (meal) => {
-    api.users.postNewUserMeal({user_id: this.state.auth.currentUser.id, meal_id: meal.id})
+    api.userMeals.postNewUserMeal({user_id: this.state.auth.currentUser.id, meal_id: meal.id})
       .then(user => this.setState({ auth: {currentUser: user }}))
+  }
+
+  handleDeleteUserMeal = (meal) => {
+    console.log('In handleDeleteUserMeal', meal)
+    api.userMeals.deleteUserMeal(meal.id)
+      .then(user => this.setState({ auth: {currentUser: user}}))
   }
 
   render() {
@@ -69,7 +75,7 @@ class App extends Component {
             exact path="/"
             render={() => {
               const loggedIn = !!localStorage.token;
-              return loggedIn ? <Home currentUser={this.state.auth.currentUser}/> : <Redirect to="/login" />
+              return loggedIn ? <Home currentUser={this.state.auth.currentUser} handleDeleteUserMeal={this.handleDeleteUserMeal}/> : <Redirect to="/login" />
             }}
           />
         <Route path="/meals" render={() => {

@@ -9,6 +9,7 @@ const MealBrowser = (props) => {
           meal={meal}
           currentUser={props.currentUser}
           handleAddMeal={props.handleAddMeal}
+          handleDeleteUserMeal={props.handleDeleteUserMeal}
           />
       )
   }) :

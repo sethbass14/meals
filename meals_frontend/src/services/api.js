@@ -40,6 +40,14 @@ const postNewUserMeal = (data) => {
   }).then(resp => resp.json())
 }
 
+const deleteUserMeal = (meal_id) => {
+  return fetch(`${APP_API_ROOT}/delete_user_meal/`, {
+    headers,
+    method: "DELETE",
+    body: JSON.stringify({meal_id})
+  }).then(resp => resp.json())
+}
+
 const fetchMeals = () => {
   return fetch(`${APP_API_ROOT}/meals/`).then(resp => resp.json())
 }
@@ -61,7 +69,10 @@ export default {
   },
   users: {
     postNewUser,
-    postNewUserMeal
+  },
+  userMeals: {
+    postNewUserMeal,
+    deleteUserMeal
   },
   meals: {
     fetchMeals

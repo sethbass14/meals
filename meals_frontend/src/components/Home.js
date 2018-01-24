@@ -28,7 +28,7 @@ export default class Home extends React.Component {
           {cookingGif ? <iframe src={cookingGif.embed_url} height={cookingGif.images["480w_still"].height} width={cookingGif.images["480w_still"].width} /> : '...loading GIF' }
         </div>
         <h1>Your Meals</h1>
-        {this.props.currentUser.id ? <MealBrowser meals={this.props.currentUser.meals} currentUser={this.props.currentUser}/> : '...loading in Home'}
+        {this.props.currentUser.id ? <MealBrowser meals={this.props.currentUser.meals} currentUser={this.props.currentUser} handleDeleteUserMeal={this.props.handleDeleteUserMeal}/> : '...loading in Home'}
       </div>
     )
   }
