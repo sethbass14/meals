@@ -4,7 +4,6 @@ import api from '../services/api'
 import MealBrowser from './MealBrowser'
 import Filter from './Filter'
 import MealShow from './MealShow'
-// import MealShowWrapper from './MealShow'
 
 export default class MealsContainer extends React.Component {
   constructor() {

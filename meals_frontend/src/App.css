@@ -22,6 +22,10 @@
   font-size: large;
 }
 
+.back:hover {
+  cursor: pointer;
+}
+
 
 
 @keyframes App-logo-spin {

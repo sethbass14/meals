@@ -1,13 +1,21 @@
 import React from 'react';
 
 const MealShow = ({ meal }) => {
-  console.log(meal)
   const sluggedUrl = meal.youtube_url.replace('watch?v=', 'embed/')
-  console.log(sluggedUrl)
   return (
     <div className="meal-show">
-      <h1>{meal.name}</h1>
-        <div className="ui two column grid container">
+      <div className="ui two column grid container">
+        <div className="row">
+          <div className="column">
+          <a className="back" onClick={() => window.history.back()}>
+            <i className="arrow circle left icon"></i>
+            <p>Go Back</p>
+          </a>
+        </div>
+        <div className="column">
+        <h1>{meal.name}</h1>
+        </div>
+        </div>
           <div className="row">
             <div className="column">
               <div className="ui card">
@@ -28,7 +36,7 @@ const MealShow = ({ meal }) => {
           </div>
           <div className="column meal-video">
             { sluggedUrl === 'none' ? null
-              : 
+              :
             <iframe src={sluggedUrl} width="420" height="315" frameBorder="0" allowFullScreen></iframe>
             }
         </div>
