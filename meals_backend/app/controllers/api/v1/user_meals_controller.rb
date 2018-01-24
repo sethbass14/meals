@@ -11,7 +11,6 @@ class Api::V1::UserMealsController < ApplicationController
   end
 
   def destroy
-
     @user_meal = UserMeal.where(user_id: current_user.id, meal_id: params[:meal_id]).first
     if @user_meal.destroy
       render json: {username: current_user.username, id: current_user.id, meals: current_user.meals, meal_ids: current_user.meal_ids}, status: 201

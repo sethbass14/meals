@@ -1,6 +1,7 @@
 import React from 'react';
 import api from '../services/api'
 import MealBrowser from './MealBrowser'
+import Filter from './Filter'
 
 export default class Home extends React.Component {
   constructor(props){

@@ -43,7 +43,6 @@ class App extends Component {
   }
 
   handleDeleteUserMeal = (meal) => {
-    console.log('In handleDeleteUserMeal', meal)
     api.userMeals.deleteUserMeal(meal.id)
       .then(user => this.setState({ auth: {currentUser: user}}))
   }
@@ -78,8 +77,9 @@ class App extends Component {
               return loggedIn ? <Home currentUser={this.state.auth.currentUser} handleDeleteUserMeal={this.handleDeleteUserMeal}/> : <Redirect to="/login" />
             }}
           />
-        <Route path="/meals" render={() => {
+        <Route path="/meals" render={(routerProps) => {
             return <MealsContainer
+              {...routerProps}
               currentUser={this.state.auth.currentUser}
               handleAddMeal={this.handleAddMeal}
               />

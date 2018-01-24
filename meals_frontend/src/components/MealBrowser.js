@@ -1,4 +1,5 @@
 import React from 'react';
+import { withRouter } from 'react-router-dom'
 import FlippableMeal from './FlippableMeal'
 
 const MealBrowser = (props) => {
@@ -22,4 +23,4 @@ const MealBrowser = (props) => {
   )
 }
 
-export default MealBrowser
+export default withRouter(MealBrowser)

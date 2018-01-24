@@ -8,6 +8,11 @@ const Navbar = (props) => {
       <Link to="/" className="item">
         <h2>Get Cooking</h2>
       </Link>
+      {loggedIn? (<a className="item back" onClick={() => window.history.back()}>
+        <i className="arrow circle left icon"></i>
+        <p>Go Back</p>
+      </a>
+      ) : (null)}
       <div className="right menu">
         {loggedIn ? (
           <div className="item">

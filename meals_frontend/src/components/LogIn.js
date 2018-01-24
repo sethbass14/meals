@@ -37,13 +37,14 @@ export default class LogIn extends React.Component {
   render() {
     return (
       <div className='log-in'>
-        {this.state.error ?
+        {this.state.error ? (
           <div>
             <h3>Try Again</h3>
             <h3>or</h3>
             <Link to="/signup">Sign Up</Link>
             <br></br>
-          </div>: null}
+          </div>
+        ): null}
         <form onSubmit={this.handleSubmit}>
           <h1>Log In</h1>
           <h2>or</h2>
