@@ -16,6 +16,12 @@ export default class MealsContainer extends React.Component {
       validMeals : [],
       searchTerm : '',
       filteredMeals : [],
+      newMealFields: {
+        name: '',
+        instructions: '',
+        image_url: '',
+        youtube_url: ''
+      }
     }
   }
 
@@ -37,6 +43,10 @@ export default class MealsContainer extends React.Component {
 
   handleChange = (event) => {
     this.setState({ searchTerm: event.target.value }, () => this.filteredMeals())
+  }
+
+  handleNewMealChange = (event) => {
+
   }
 
   filteredMeals = () => {

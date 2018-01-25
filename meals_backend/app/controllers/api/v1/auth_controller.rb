@@ -11,7 +11,6 @@ class Api::V1::AuthController < ApplicationController
   end
 
   def show
-    # token = request.headers['Authorization']
     user = User.find(user_id)
     if user
       render json: {username: user.username, id: user.id, meals: user.meals, meal_ids: user.meal_ids}
