@@ -26,7 +26,7 @@ export default class LogIn extends React.Component {
     api.auth.login(this.state.fields)
       .then(resp => {
         if (resp.error) {
-          this.setState({ error: true})
+          this.setState({ error: true}, () => console.log("In handle login submit", this.state))
         } else {
           this.props.handleLogIn(resp)
           this.props.history.push('/')

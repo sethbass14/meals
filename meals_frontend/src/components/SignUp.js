@@ -27,7 +27,6 @@ export default class SignUp extends React.Component {
         this.setState({ error: true})
       } else {
         this.props.handleLogIn(resp)
-        debugger
         this.props.history.push('/')
       }
     })

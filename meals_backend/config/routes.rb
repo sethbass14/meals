@@ -9,6 +9,7 @@ Rails.application.routes.draw do
       delete '/delete_user_meal', to: 'user_meals#destroy'
       post '/auth', to: 'auth#create'
       get '/current_user', to: 'auth#show'
+      delete '/destroy_current_user', to: 'auth#destroy'
     end
   end
 

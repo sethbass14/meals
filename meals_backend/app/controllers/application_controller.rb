@@ -5,7 +5,14 @@ class ApplicationController < ActionController::API
   end
 
   def current_user
+    puts 'hitting current user'
     @current_user ||= User.find_by(id: token.first["id"])
+    if @current_user
+      puts "current user is #{@current_user.username}"
+    else
+      puts 'no current user'
+    end
+    return @current_user
   end
 
   def token

@@ -24,6 +24,12 @@ const getCurrentUser = () => {
   }).then(resp => resp.json())
 }
 
+const destroyCurrentUser = () => {
+  return fetch(`${APP_API_ROOT}/destroy_current_user`, {
+    method: "DELETE"
+  }).then(resp => resp.json())
+}
+
 const postNewUser = (user_data) => {
   return fetch(`${APP_API_ROOT}/users/`, {
     headers,
@@ -65,7 +71,8 @@ const fetchGif = () => {
 export default {
   auth: {
     login,
-    getCurrentUser
+    getCurrentUser,
+    destroyCurrentUser
   },
   users: {
     postNewUser,
