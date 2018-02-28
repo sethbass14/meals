@@ -39,7 +39,7 @@ class App extends Component {
   }
 
   handleAddMeal = (meal) => {
-    api.userMeals.postNewUserMeal({user_id: this.state.auth.currentUser.id, meal_id: meal.id})
+    api.userMeals.postNewUserMeal({user_id: this.state.auth.currentUser.id, meal_id: meal.id}, localStorage.getItem('token'))
       .then(user => this.setState({ auth: {currentUser: user }}))
   }
 

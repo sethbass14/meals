@@ -67,7 +67,7 @@ export default class MealsContainer extends React.Component {
 
 // I don't really like this logic below, but it works
   render() {
-    console.log('In the meals container')
+    console.log('In the meals container', this.props)
     return (
       <div className="meals-containter">
         <Switch>

@@ -2,12 +2,12 @@ import { API_KEY } from './api-key';
 const GIFURL = `https://api.giphy.com/v1/gifs/search?api_key=${API_KEY}&q='cooking'&limit=25`
 
 const APP_API_ROOT = `http://localhost:3000/api/v1/`
-const token = localStorage.getItem('token')
+// const token = localStorage.getItem('token')
 
 const headers = {
   'Content-Type': 'application/json',
   'Accepts': 'application/json',
-  'Authorization': token
+  'Authorization': localStorage.getItem('token')
 }
 
 const login = (user_data) => {
@@ -38,9 +38,14 @@ const postNewUser = (user_data) => {
   }).then(resp => resp.json())
 }
 
-const postNewUserMeal = (data) => {
+const postNewUserMeal = (data, storage_token) => {
+  debugger
   return fetch(`${APP_API_ROOT}/user_meals/`, {
-    headers,
+    headers: {
+      'Content-Type': 'application/json',
+      'Accepts': 'application/json',
+      'Authorization': storage_token
+    },
     method: 'POST',
     body: JSON.stringify(data)
   }).then(resp => resp.json())
