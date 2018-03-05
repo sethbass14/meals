@@ -35,6 +35,7 @@ class App extends Component {
   handleLogOut = () => {
     localStorage.removeItem('token')
     api.auth.destroyCurrentUser()
+    debugger
     this.setState({auth: {currentUser : {} }})
   }
 

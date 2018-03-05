@@ -26,10 +26,13 @@ export default class SignUp extends React.Component {
       if (resp.error) {
         this.setState({ error: true})
       } else {
-        api.auth.login(this.state.fields).then(resp => {
-          this.props.handleLogIn(resp)
-          this.props.history.push('/')    
-        })
+        // api.auth.login(this.state.fields).then(resp => {
+        //   this.props.handleLogIn(resp)
+        //   this.props.history.push('/')    
+        // })
+        this.props.handleLogIn(resp)
+        debugger
+        this.props.history.push('/')
       }
     })
   }
